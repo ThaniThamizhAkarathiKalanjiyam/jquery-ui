@@ -34,7 +34,7 @@
 	}
 }( function( $ ) {
 
-$.extend( $.ui, { datepicker: { version: "@VERSION" } } );
+$.extend( $.ui, { datepicker_ta: { version: "@VERSION" } } );
 
 var datepicker_instActive;
 
