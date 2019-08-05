@@ -1129,7 +1129,7 @@ $.extend( DatepickerTa.prototype, {
 	 *					monthNamesShort string[12] - abbreviated names of the months (optional)
 	 *					monthNames		string[12] - names of the months (optional)
 	 * @return  Date - the extracted date value or null if value is blank
-	 */
+	 */ 
 	parseDate: function( format, value, settings ) {
 		if ( format == null || value == null ) {
 			throw "Invalid arguments";
