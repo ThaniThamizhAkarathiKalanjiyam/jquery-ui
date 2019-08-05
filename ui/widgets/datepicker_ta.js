@@ -2112,6 +2112,6 @@ $.datepicker.initialized = false;
 $.datepicker.uuid = new Date().getTime();
 $.datepicker.version = "@VERSION";
 
-return $.datepicker;
+return $.datepicker_ta;
 
 } ) );
