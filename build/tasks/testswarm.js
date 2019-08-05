@@ -24,6 +24,7 @@ var versions = {
 		"Controlgroup": "controlgroup/controlgroup.html",
 		"Core": "core/core.html",
 		"Datepicker": "datepicker/datepicker.html",
+		"DatepickerTa": "datepicker_ta/datepicker_ta.html",
 		"Dialog": "dialog/dialog.html",
 		"Draggable": "draggable/draggable.html",
 		"Droppable": "droppable/droppable.html",
