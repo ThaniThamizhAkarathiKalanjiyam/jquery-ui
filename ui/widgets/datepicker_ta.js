@@ -1,7 +1,7 @@
 // jscs:disable maximumLineLength
 /* jscs:disable requireCamelCaseOrUpperCaseIdentifiers */
 /*!
- * jQuery UI Datepicker @VERSION
+ * jQuery UI DatepickerTa @VERSION
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -9,7 +9,7 @@
  * http://jquery.org/license
  */
 
-//>>label: Datepicker
+//>>label: DatepickerTa
 //>>group: Widgets
 //>>description: Displays a calendar from an input or inline for selecting dates.
 //>>docs: http://api.jqueryui.com/datepicker/
@@ -67,7 +67,7 @@ function datepicker_getZindex( elem ) {
    Settings for (groups of) date pickers are maintained in an instance object,
    allowing multiple different settings on the same page. */
 
-function Datepicker() {
+function DatepickerTa() {
 	this._curInst = null; // The current instance in use
 	this._keyEvent = false; // If the last event was a key event
 	this._disabledInputs = []; // List of date picker inputs that have been disabled
@@ -156,7 +156,7 @@ function Datepicker() {
 	this.dpDiv = datepicker_bindHover( $( "<div id='" + this._mainDivId + "' class='ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>" ) );
 }
 
-$.extend( Datepicker.prototype, {
+$.extend( DatepickerTa.prototype, {
 	/* Class name added to elements to indicate already configured with a date picker. */
 	markerClassName: "hasDatepicker",
 
@@ -323,7 +323,7 @@ $.extend( Datepicker.prototype, {
 		}
 
 		// Set display:block in place of inst.dpDiv.show() which won't work on disconnected elements
-		// http://bugs.jqueryui.com/ticket/7552 - A Datepicker created on a detached div has zero height
+		// http://bugs.jqueryui.com/ticket/7552 - A DatepickerTa created on a detached div has zero height
 		inst.dpDiv.css( "display", "block" );
 	},
 
@@ -2092,22 +2092,22 @@ $.fn.datepicker = function( options ) {
 
 	var otherArgs = Array.prototype.slice.call( arguments, 1 );
 	if ( typeof options === "string" && ( options === "isDisabled" || options === "getDate" || options === "widget" ) ) {
-		return $.datepicker[ "_" + options + "Datepicker" ].
+		return $.datepicker[ "_" + options + "DatepickerTa" ].
 			apply( $.datepicker, [ this[ 0 ] ].concat( otherArgs ) );
 	}
 	if ( options === "option" && arguments.length === 2 && typeof arguments[ 1 ] === "string" ) {
-		return $.datepicker[ "_" + options + "Datepicker" ].
+		return $.datepicker[ "_" + options + "DatepickerTa" ].
 			apply( $.datepicker, [ this[ 0 ] ].concat( otherArgs ) );
 	}
 	return this.each( function() {
 		typeof options === "string" ?
-			$.datepicker[ "_" + options + "Datepicker" ].
+			$.datepicker[ "_" + options + "DatepickerTa" ].
 				apply( $.datepicker, [ this ].concat( otherArgs ) ) :
 			$.datepicker._attachDatepicker( this, options );
 	} );
 };
 
-$.datepicker_ta = new Datepicker(); // singleton instance
+$.datepicker_ta = new DatepickerTa(); // singleton instance
 $.datepicker_ta.initialized = false;
 $.datepicker_ta.uuid = new Date().getTime();
 $.datepicker_ta.version = "@VERSION";
