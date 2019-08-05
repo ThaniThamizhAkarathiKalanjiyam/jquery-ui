@@ -2107,10 +2107,10 @@ $.fn.datepicker = function( options ) {
 	} );
 };
 
-$.datepicker = new Datepicker(); // singleton instance
-$.datepicker.initialized = false;
-$.datepicker.uuid = new Date().getTime();
-$.datepicker.version = "@VERSION";
+$.datepicker_ta = new Datepicker(); // singleton instance
+$.datepicker_ta.initialized = false;
+$.datepicker_ta.uuid = new Date().getTime();
+$.datepicker_ta.version = "@VERSION";
 
 return $.datepicker_ta;
 
