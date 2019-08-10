@@ -8,7 +8,8 @@
 
 	<script src="../../external/jquery-1.12.4/jquery.js"></script>	
 	<!--script src="../../external/TamilCalendar/eng2tamMap/_2019.json"></script-->	
-	<script src="../../ui/widgets/lunarCalendarTamil.js"></script>
+	<!--script src="../../ui/widgets/lunarCalendarTamil.js"></script-->
+	<script src="../../external/TamilCalendar/calendar_ta.js"></script>	
 	<script src="../../ui/widgets/datepicker_ta.js"></script>
 	<script>
 	$( function() {
@@ -16,26 +17,23 @@
 			showButtonPanel: true
 		});
 		
+		$("#taDate").html(TC.Test(2019,8,1)+
+						TC.Test(2019,8,10)+
+						TC.Test(2019,8,16)+
+						TC.Test(2019,8,17)+
+						TC.Test(2019,8,18)
+						
+						);
 		
-		var date = new Date();
-		$("#taDate").html(LC.get_ganzhiDay(date));
-		$("#taMonth").html("dsfsd");
-		$("#taYear").html(LC.monthName[1]);
-		$("#taSeason").html(LC.get_season(date.getMonth()));
 		
 		});
 	</script>
 </head>
 <body>
 
-Tamil Date: <div id="datepicker"></div>
+English Date: <div id="datepicker"></div>
 
-<div id="taCalDetails">
-	Tamil Date:<div id="taDate" ></div>
-	Tamil Month:<div id="taMonth" ></div>
-	Tamil Year:<div id="taYear" ></div>
-	Tamil Season:<div id="taSeason" ></div>
-</div>
+Tamil Date:<div id="taDate" ></div>
 
 
 <div class="demo-description">
