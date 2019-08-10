@@ -32,9 +32,7 @@ var TC = {
 		},
 		get_tamil_day_poluthu: function (eng_time) {
 			if(eng_time == null)
-			{
-				eng_time = today.getHours();
-			}
+				eng_time = today.getHours();			
 			if (eng_time > 2 && eng_time <= 6)
 				return 1;
 			else if (eng_time > 6 && eng_time <= 10)
@@ -54,19 +52,11 @@ var TC = {
 		tamilMonth: function (y, m, d) {
 			tm = 0;
 			if(y == 2019)
-			{
 				if(m == 8)
-				{
 					if(d < 18)
-					{
 						tm = 4;
-					}
 					else
-					{
-						tm = 5;
-					}
-				}
-			}
+						tm = 5;			
 			return tm;
 		},
 		getTamilMonthName: function (y, m, d) {
@@ -81,14 +71,9 @@ var TC = {
 			}
 			//Tamil new year start at april month.
 			//ToDO caluculate the before 14 date of april
-			if(m <= 4 )
-			{				
+			if(m <= 4 )			
 				if(d <= 14)
-				{
-					y = y - 1;
-				}
-			}
-			
+					y = y - 1;			
 			taYear = ((y + 53) % 60) + 1;
 			
 			return taYear;
