@@ -4,14 +4,25 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>jQuery UI Datepicker Tamil - Display inline</title>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="../../themes/base/all.css">
 
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="https://thanithamizhakarathikalanjiyam.github.io/jquery-ui/ui/widgets/datepicker_ta.js"></script>
+	<script src="../../external/jquery-1.12.4/jquery.js"></script>	
+	<!--script src="../../external/TamilCalendar/eng2tamMap/_2019.json"></script-->	
+	<script src="../../ui/widgets/lunarCalendarTamil.js"></script>
+	<script src="../../ui/widgets/datepicker_ta.js"></script>
 	<script>
 	$( function() {
-		$( "#datepicker" ).datepicker_ta();
+		$( "#datepicker" ).datepicker_ta({
+			showButtonPanel: true
+		});
+		
+		
+		var date = new Date();
+		$("#taDate").html(LC.get_ganzhiDay(date));
+		$("#taMonth").html("dsfsd");
+		$("#taYear").html(LC.monthName[1]);
+		$("#taSeason").html(LC.get_season(date.getMonth()));
+		
 		});
 	</script>
 </head>
@@ -19,8 +30,20 @@
 
 Tamil Date: <div id="datepicker"></div>
 
+<div id="taCalDetails">
+	Tamil Date:<div id="taDate" ></div>
+	Tamil Month:<div id="taMonth" ></div>
+	Tamil Year:<div id="taYear" ></div>
+	Tamil Season:<div id="taSeason" ></div>
+</div>
+
+
 <div class="demo-description">
 <p>Display the datepicker embedded in the page instead of in an overlay.  Simply call .datepicker_ta() on a div instead of an input.</p>
 </div>
+
+
+
+
 </body>
 </html>
