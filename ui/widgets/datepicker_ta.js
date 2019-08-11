@@ -88,8 +88,8 @@ function DatepickerTa() {
 		prevText: "Prev", // Display text for previous month link
 		nextText: "Next", // Display text for next month link
 		currentText: "Today", // Display text for current month link
-		monthNames: [ "January","February","March","April","May","June",
-			"July","August","September","October","November","December" ], // Names of months for drop-down and formatting
+		monthNames: [ "சனவரி","பிப்ரவரி","மார்ச்சு","ஏப்ரல்","மே","சூன்",
+			"சூலை","ஆகத்து","செப்டம்பர்","அக்டோபர்","நவம்பர்","திசம்பர்" ], // Names of months for drop-down and formatting
 		monthNames_ta: [ "சித்திரை","வைகாசி","ஆனி","ஆடி","ஆவணி","புரட்டாசி","ஐப்பசி","கார்த்திகை","மார்கழி","தை","மாசி","பங்குனி" ], // Names of months for drop-down and formatting
 		monthNamesShort: [ "சித்தி", "வைகாசி", "ஆனி", "ஆடி", "ஆவணி", "புரட்", "ஐப்ப", "கார்த்தி", "மார்", "தை", "மாசி", "பங்குனி" ], // For formatting
 		dayNames: [ "ஞாயிறு", "திங்கள்", "செவ்வாய்", "புதன்", "வியாழன்", "வெள்ளி", "சனி" ], // For formatting
@@ -1772,11 +1772,13 @@ $.extend( DatepickerTa.prototype, {
 					row > 0 || col > 0, monthNames, monthNamesShort ) + // draw month headers
 					"</div>";	
 				calender += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix ui-datepicker-title" + cornerClass + "'>" +
-					TC.getTamilMonthName(2019, 8, 11)+
+					TC.getTamilMonthName()+
 					" மாதம் "+
-					TC.tamilDate(2019, 8, 11)+
+					TC.tamilDate()+
 					" ம் தேதி<br>"+
-					TC.getTamilYearName(2019, 8, 11)+
+					TC.getTamilSeason()+
+					" காலம்<br>"+
+					TC.getTamilYearName()+
 					" வருடம்"+
 					"</div>";
 				calender += "<table class='ui-datepicker-calendar'><thead>" +

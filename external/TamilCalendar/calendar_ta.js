@@ -22,19 +22,19 @@ var yrMap = [
 {
     engYear: 2019,
     engTaMap : [	
-		{eMM:1,taMM:1,taDD:18},
-		{eMM:2,taMM:1,taDD:18},
-		{eMM:3,taMM:1,taDD:18},
-		{eMM:4,taMM:1,taDD:18},		
-		
-		{eMM:5,taMM:1,taDD:18},
-		{eMM:6,taMM:2,taDD:18},
-		{eMM:7,taMM:3,taDD:16},
-		{eMM:8,taMM:4,taDD:16},
-		{eMM:9,taMM:5,taDD:15},
-		{eMM:10,taMM:6,taDD:14},
-		{eMM:11,taMM:7,taDD:13},
-		{eMM:12,taMM:8,taDD:15},
+		{eMM:0,taMM:1,taDD:18},//Jan
+		{eMM:1,taMM:1,taDD:18},//Feb
+		{eMM:2,taMM:1,taDD:18},//Mar
+		{eMM:3,taMM:1,taDD:18},//Apr
+		     
+		{eMM:4,taMM:1,taDD:18},//May
+		{eMM:5,taMM:2,taDD:18},//Jun
+		{eMM:6,taMM:3,taDD:16},//Jul
+		{eMM:7,taMM:4,taDD:16},//Aug
+		{eMM:8,taMM:5,taDD:15},//Sep
+		{eMM:9,taMM:6,taDD:14},//Oct
+		{eMM:10,taMM:7,taDD:13},//Nov
+		{eMM:11,taMM:8,taDD:15},//Dec
 	]
 },
 ];
@@ -49,7 +49,7 @@ var TC = {
 		getTamilSeason: function (ta_month) {
 			if(ta_month == null)
 			{
-				ta_month = today.getMonth();
+				ta_month = TC.tamilMonth();
 			}
 			tamil_season = 0;
 			if (ta_month <= 2)
@@ -84,14 +84,44 @@ var TC = {
 				return 6;
 		},
 		tamilDate: function (y, m, d) {
+			if(y === undefined){
+				y = today.getFullYear ();
+				m = today.getMonth();
+				d = today.getDate();
+			}
 			td = 0
-			if(y == 2019)
-				if(m == 8)
-					if(d < 18)
-						td = d + 15
+			var i;
+			for (i =0; i < yrMap.length; i++)
+			{
+				if(yrMap[i].engYear == y)
+				{
+					var j;
+					for (j =0; j < yrMap[i].engTaMap.length; j++)
+					{
+						var preMonth = yrMap[i].engTaMap[j-1];
+						var curMonth = yrMap[i].engTaMap[j];
+						var nxtMonth = yrMap[i].engTaMap[j+1];
+						if(curMonth.eMM == m){
+							if(d < curMonth.taDD){
+								td = curMonth.taDD + d - 1;
+							}
+							else if(curMonth.taDD >= d){
+								td = curMonth.taMM;
+							}
+							break;							
+						}
+					}
+				}
+			}
+			
 			return td;						
 		},
 		tamilMonth: function (y, m, d) {
+			if(y === undefined){
+				y = today.getFullYear ();
+				m = today.getMonth();
+				d = today.getDate();
+			}
 			tm = 0;
 			var i;
 			for (i =0; i < yrMap.length; i++)
@@ -121,14 +151,19 @@ var TC = {
 			return tm;
 		},
 		getTamilMonthName: function (y, m, d) {
+			if(y === undefined){
+				y = today.getFullYear ();
+				m = today.getMonth();
+				d = today.getDate();
+			}
 			tm = TC.tamilMonth(y, m, d);
 			return TC.tamilMonthName[tm];
 		},
 		tamilYear: function (y, m, d) {
-			if(y == null)
-			{
-				y = eng_year;				
-				m = eng_month;
+			if(y === undefined){
+				y = today.getFullYear ();
+				m = today.getMonth();
+				d = today.getDate();
 			}
 			//Tamil new year start at april month.
 			//ToDO caluculate the before 14 date of april
@@ -140,9 +175,19 @@ var TC = {
 			return taYear;
 		},
 		monthDays: function (y, m) {
+			if(y === undefined){
+				y = today.getFullYear ();
+				m = today.getMonth();
+				d = today.getDate();
+			}
 			
 		},
 		getTamilYearName: function (y, m, d) {
+			if(y === undefined){
+				y = today.getFullYear ();
+				m = today.getMonth();
+				d = today.getDate();
+			}
 			taYear = TC.tamilYear(y, m, d);
 			return TC.tamilYearName[taYear];
 		},
