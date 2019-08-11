@@ -146,7 +146,7 @@ var TC = {
 			taYear = TC.tamilYear(y, m, d);
 			return TC.tamilYearName[taYear];
 		},
-		Test:function (y, m, d){
+		Test: function (y, m, d){
 			return "<HR>Date:"+y + m + d+"<BR>"+
 			TC.tamilDate(y, m, d)+
 						"/"+TC.getTamilMonthName(y, m, d)+
