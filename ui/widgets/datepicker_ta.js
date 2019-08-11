@@ -1770,7 +1770,15 @@ $.extend( DatepickerTa.prototype, {
 					( /all|right/.test( cornerClass ) && row === 0 ? ( isRTL ? prev : next ) : "" ) +
 					this._generateMonthYearHeader( inst, drawMonth, drawYear, minDate, maxDate,
 					row > 0 || col > 0, monthNames, monthNamesShort ) + // draw month headers
-					"</div>";				
+					"</div>";	
+				calender += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix ui-datepicker-title" + cornerClass + "'>" +
+					TC.getTamilMonthName(2019, 8, 11)+
+					" மாதம் "+
+					TC.tamilDate(2019, 8, 11)+
+					" ம் தேதி<br>"+
+					TC.getTamilYearName(2019, 8, 11)+
+					" வருடம்"+
+					"</div>";
 				calender += "<table class='ui-datepicker-calendar'><thead>" +
 					"<tr>";
 				thead = ( showWeek ? "<th class='ui-datepicker-week-col'>" + this._get( inst, "weekHeader" ) + "</th>" : "" );
@@ -1824,6 +1832,7 @@ $.extend( DatepickerTa.prototype, {
 					}
 					calender += tbody + "</tr>";
 				}
+				
 				drawMonth++;
 				if ( drawMonth > 11 ) {
 					drawMonth = 0;
@@ -1835,7 +1844,7 @@ $.extend( DatepickerTa.prototype, {
 			}
 			html += group;
 		}
-		html += buttonPanel;
+		html += buttonPanel;		
 		inst._keyEvent = false;
 		return html;
 	},
