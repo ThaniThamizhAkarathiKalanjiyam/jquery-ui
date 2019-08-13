@@ -191,6 +191,16 @@ var TC = {
 			taYear = TC.tamilYear(y, m, d);
 			return TC.tamilYearName[taYear];
 		},
+		getTVAandu: function (y, m, d) {
+			tvandu = 0;
+			if(y === undefined){
+				y = today.getFullYear ();
+				m = today.getMonth();
+				d = today.getDate();
+			}
+			tvandu = y + 31;
+			return tvandu;
+		},
 		Test: function (y, m, d){
 			return "<HR>Date:"+y + m + d+"<BR>"+
 			TC.tamilDate(y, m, d)+

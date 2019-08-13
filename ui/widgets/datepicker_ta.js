@@ -1771,16 +1771,27 @@ $.extend( DatepickerTa.prototype, {
 					this._generateMonthYearHeader( inst, drawMonth, drawYear, minDate, maxDate,
 					row > 0 || col > 0, monthNames, monthNamesShort ) + // draw month headers
 					"</div>";	
-				calender += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix ui-datepicker-title" + cornerClass + "'>" +
-					TC.getTamilMonthName()+
-					" மாதம் "+
-					TC.tamilDate()+
-					" ம் தேதி<br>"+
-					TC.getTamilSeason()+
-					" காலம்<br>"+
-					TC.getTamilYearName()+
-					" வருடம்"+
-					"</div>";
+				//calender += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix ui-datepicker-title" + cornerClass + "'>" +
+				//	TC.getTamilMonthName()+
+				//	" மாதம் "+
+				//	TC.tamilDate()+
+				//	" ம் தேதி<br>"+
+				//	TC.getTamilSeason()+
+				//	" காலம்<br>"+
+				//	TC.getTamilYearName()+
+				//	" வருடம்"+
+				//	"</div>";
+				calender += '<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">'+
+					'<div class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="Prev">'+
+					'கயு '+
+					'</div>'+
+					'<div class="ui-datepicker-next ui-corner-all" title="Next">'+
+					'திவ '+ TC.getTVAandu() +
+					'</div>'+
+					'<div class="ui-datepicker-title">'+
+					'<span class="ui-datepicker-month">'+TC.getTamilMonthName()+" "+TC.tamilDate()+'</span>&nbsp;<span class="ui-datepicker-year">'+TC.getTamilSeason()+" "+TC.getTamilYearName()+' வருடம்</span>'+
+					'</div>'+
+					'</div>';
 				calender += "<table class='ui-datepicker-calendar'><thead>" +
 					"<tr>";
 				thead = ( showWeek ? "<th class='ui-datepicker-week-col'>" + this._get( inst, "weekHeader" ) + "</th>" : "" );
