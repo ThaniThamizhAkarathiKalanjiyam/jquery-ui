@@ -1782,7 +1782,7 @@ $.extend( DatepickerTa.prototype, {
 				//	" வருடம்"+
 				//	"</div>";
 				calender += '<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">'+
-					'<div class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="Prev">'+
+					'<div class="ui-datepicker-prev ui-corner-all" data-handler="prev">'+
 					'கயு '+
 					'</div>'+
 					'<div class="ui-datepicker-next ui-corner-all" title="Next">'+
