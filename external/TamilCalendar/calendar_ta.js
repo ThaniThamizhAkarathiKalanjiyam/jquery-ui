@@ -47,8 +47,7 @@ var TC = {
 		peruPoluthu: new Array("","இளவேனில்", "முதுவேனில்", "கார்", "கூதிர்", "முன்பனி", "பின்பனி"),
 		siruPoluthu: new Array("","வைகறை", "காலை", "நண்பகல்", "எற்பாடு", "மாலை", "யாமம்"),
 		getTamilSeason: function (ta_month) {
-			if(ta_month == null)
-			{
+			if(ta_month === undefined){
 				ta_month = TC.tamilMonth();
 			}
 			tamil_season = 0;
@@ -68,8 +67,9 @@ var TC = {
 			return TC.peruPoluthu[tamil_season];
 		},
 		getTamilDayPoluthu: function (eng_time) {
-			if(eng_time == null)
+			if(eng_time === undefined){
 				eng_time = today.getHours();			
+			}
 			if (eng_time > 2 && eng_time <= 6)
 				return 1;
 			else if (eng_time > 6 && eng_time <= 10)
@@ -81,6 +81,7 @@ var TC = {
 			else if (eng_time > 18 && eng_time <= 22)
 				return 5;
 			else if (eng_time > 22 && eng_time <= 2)
+				
 				return 6;
 		},
 		tamilDate: function (y, m, d) {

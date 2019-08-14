@@ -1775,10 +1775,10 @@ $.extend( DatepickerTa.prototype, {
 				calender += '<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">'+
 					'<div class="ui-datepicker-prev ui-corner-all ui-datepicker-month" title="கலியுகம்" style="height:0px;font-size:small;">'+
 					'கயு '+ TC.getKaliYugaAandu() +
-					'</div>'+
-					'<div class="ui-datepicker-next ui-corner-all ui-datepicker-month" title="திருவள்ளுவர் ஆண்டு" style="height:0px;font-size:small;">'+
-					'திவ '+ TC.getTVAandu() +
-					'</div>'+
+					' >> </div>'+
+					'<span class="ui-datepicker-next ui-corner-all ui-datepicker-month" title="திருவள்ளுவர் ஆண்டு" style="height:0px;font-size:small;">'+
+					'<< திவ '+ TC.getTVAandu() +					
+					'</span>'+
 					'<div class="ui-datepicker-title" id="tvAandu">'+
 					'<span class="ui-datepicker-month">'+TC.getTamilMonthName()+" "+TC.tamilDate()+'</span>&nbsp;<span class="ui-datepicker-year">'+TC.getTamilSeason()+" "+TC.getTamilYearName()+' வருடம்</span>'+
 					'</div>'+
