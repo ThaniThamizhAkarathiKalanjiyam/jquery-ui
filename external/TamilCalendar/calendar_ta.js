@@ -201,6 +201,16 @@ var TC = {
 			tvandu = y + 31;
 			return tvandu;
 		},
+		getKaliYugaAandu: function (y, m, d) {
+			kaliYugaAandu = 0;
+			if(y === undefined){
+				y = today.getFullYear ();
+				m = today.getMonth();
+				d = today.getDate();
+			}
+			kaliYugaAandu = y + 3101;
+			return kaliYugaAandu;
+		},
 		Test: function (y, m, d){
 			return "<HR>Date:"+y + m + d+"<BR>"+
 			TC.tamilDate(y, m, d)+

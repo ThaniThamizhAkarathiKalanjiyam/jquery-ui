@@ -84,10 +84,10 @@ function DatepickerTa() {
 	this._dayOverClass = "ui-datepicker-days-cell-over"; // The name of the day hover marker class
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[ "" ] = { // Default regional settings
-		closeText: "Done", // Display text for close link
-		prevText: "Prev", // Display text for previous month link
-		nextText: "Next", // Display text for next month link
-		currentText: "Today", // Display text for current month link
+		closeText: "முடி", // Display text for close link
+		prevText: "பின்", // Display text for previous month link
+		nextText: "முன்", // Display text for next month link
+		currentText: "இன்று", // Display text for current month link
 		monthNames: [ "சனவரி","பிப்ரவரி","மார்ச்சு","ஏப்ரல்","மே","சூன்",
 			"சூலை","ஆகத்து","செப்டம்பர்","அக்டோபர்","நவம்பர்","திசம்பர்" ], // Names of months for drop-down and formatting
 		monthNames_ta: [ "சித்திரை","வைகாசி","ஆனி","ஆடி","ஆவணி","புரட்டாசி","ஐப்பசி","கார்த்திகை","மார்கழி","தை","மாசி","பங்குனி" ], // Names of months for drop-down and formatting
@@ -1782,13 +1782,13 @@ $.extend( DatepickerTa.prototype, {
 				//	" வருடம்"+
 				//	"</div>";
 				calender += '<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">'+
-					'<div class="ui-datepicker-prev ui-corner-all" data-handler="prev">'+
-					'கயு '+
+					'<div class="ui-datepicker-prev ui-corner-all" title="கலியுகம்" style="height:0px;font-size:x-small;">'+
+					'கயு '++ TC.getKaliYugaAandu() +
 					'</div>'+
-					'<div class="ui-datepicker-next ui-corner-all" title="Next">'+
+					'<div class="ui-datepicker-next ui-corner-all" title="திருவள்ளுவர் ஆண்டு" style="height:0px;font-size:x-small;">'+
 					'திவ '+ TC.getTVAandu() +
 					'</div>'+
-					'<div class="ui-datepicker-title">'+
+					'<div class="ui-datepicker-title" id="tvAandu">'+
 					'<span class="ui-datepicker-month">'+TC.getTamilMonthName()+" "+TC.tamilDate()+'</span>&nbsp;<span class="ui-datepicker-year">'+TC.getTamilSeason()+" "+TC.getTamilYearName()+' வருடம்</span>'+
 					'</div>'+
 					'</div>';
