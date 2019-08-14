@@ -1771,21 +1771,12 @@ $.extend( DatepickerTa.prototype, {
 					this._generateMonthYearHeader( inst, drawMonth, drawYear, minDate, maxDate,
 					row > 0 || col > 0, monthNames, monthNamesShort ) + // draw month headers
 					"</div>";	
-				//calender += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix ui-datepicker-title" + cornerClass + "'>" +
-				//	TC.getTamilMonthName()+
-				//	" மாதம் "+
-				//	TC.tamilDate()+
-				//	" ம் தேதி<br>"+
-				//	TC.getTamilSeason()+
-				//	" காலம்<br>"+
-				//	TC.getTamilYearName()+
-				//	" வருடம்"+
-				//	"</div>";
+				
 				calender += '<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">'+
-					'<div class="ui-datepicker-prev ui-corner-all" title="கலியுகம்" style="height:0px;font-size:x-small;">'+
-					'கயு '++ TC.getKaliYugaAandu() +
+					'<div class="ui-datepicker-prev ui-corner-all ui-datepicker-month" title="கலியுகம்" style="height:0px;font-size:small;">'+
+					'கயு '+ TC.getKaliYugaAandu() +
 					'</div>'+
-					'<div class="ui-datepicker-next ui-corner-all" title="திருவள்ளுவர் ஆண்டு" style="height:0px;font-size:x-small;">'+
+					'<div class="ui-datepicker-next ui-corner-all ui-datepicker-month" title="திருவள்ளுவர் ஆண்டு" style="height:0px;font-size:small;">'+
 					'திவ '+ TC.getTVAandu() +
 					'</div>'+
 					'<div class="ui-datepicker-title" id="tvAandu">'+
