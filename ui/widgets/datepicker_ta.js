@@ -1773,15 +1773,15 @@ $.extend( DatepickerTa.prototype, {
 					"</div>";	
 				
 				calender += '<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">'+
-					'<div class="ui-datepicker-prev ui-corner-all ui-datepicker-month" title="கலியுகம்" style="height:0px;font-size:small;">'+
+					'<div class="ui-datepicker-prev ui-corner-all ui-datepicker-month" title="கலியுகம்" style="height:100%;font-size:small;">'+
 					'கயு '+ TC.getKaliYugaAandu() +
 					' >> </div>'+
-					'<span class="ui-datepicker-next ui-corner-all ui-datepicker-month" title="திருவள்ளுவர் ஆண்டு" style="height:0px;font-size:small;">'+
+					'<div class="ui-datepicker-next ui-corner-all ui-datepicker-month" title="திருவள்ளுவர் ஆண்டு" style="height:100%;font-size:small;">'+					
 					'<< திவ '+ TC.getTVAandu() +					
-					'</span>'+
+					'</div>'+
 					'<div class="ui-datepicker-title" id="tvAandu">'+
 					'<span class="ui-datepicker-month">'+TC.getTamilMonthName()+" "+TC.tamilDate()+'</span>&nbsp;<span class="ui-datepicker-year">'+TC.getTamilSeason()+" "+TC.getTamilYearName()+' வருடம்</span>'+
-					'</div>'+
+					'</div>'+					
 					'</div>';
 				calender += "<table class='ui-datepicker-calendar'><thead>" +
 					"<tr>";
