@@ -992,6 +992,9 @@ $.extend( DatepickerTa.prototype, {
 		this._adjustInstDate( inst, offset, period );
 		this._updateDatepicker( inst );
 	},
+	_kaliYuga:function() {
+		$("#tvAandu").html("கலியுகம் "+ TC.getKaliYugaAandu()+" ");
+	},
 
 	/* Action for current link. */
 	_gotoToday: function( id ) {
@@ -1627,6 +1630,9 @@ $.extend( DatepickerTa.prototype, {
 				prev: function() {
 					$.datepicker_ta._adjustDate( id, -stepMonths, "M" );
 				},
+				kaliYuga: function() {
+					$.datepicker_ta._kaliYuga();
+				},
 				next: function() {
 					$.datepicker_ta._adjustDate( id, +stepMonths, "M" );
 				},
@@ -1655,7 +1661,7 @@ $.extend( DatepickerTa.prototype, {
 
 	/* Generate the HTML for the current state of the date picker. */
 	_generateHTML: function( inst ) {
-		var maxDraw, prevText, prev, nextText, next, currentText, gotoDate,
+		var maxDraw, prevText, prev, kaliYuga, nextText, next, currentText, gotoDate,
 			controls, buttonPanel, firstDay, showWeek, dayNames, dayNamesMin,
 			monthNames, monthNamesShort, beforeShowDay, showOtherMonths,
 			selectOtherMonths, defaultDate, html, dow, row, group, col, selectedDate,
@@ -1707,6 +1713,8 @@ $.extend( DatepickerTa.prototype, {
 			"<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
 			" title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w" ) + "'>" + prevText + "</span></a>" :
 			( hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w" ) + "'>" + prevText + "</span></a>" ) );
+			
+		
 
 		nextText = this._get( inst, "nextText" );
 		nextText = ( !navigationAsDateFormat ? nextText : this.formatDate( nextText,
@@ -1773,14 +1781,16 @@ $.extend( DatepickerTa.prototype, {
 					"</div>";	
 				
 				calender += '<div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">'+
-					'<div class="ui-datepicker-prev ui-corner-all ui-datepicker-month" title="கலியுகம்" style="height:100%;font-size:small;">'+
+					'<div class="ui-datepicker-prev ui-corner-all ui-datepicker-month" title="கலியுகம்" style="height:100%;font-size:small;" data-handler="kaliYuga" data-event="click">'+
 					'கயு '+ TC.getKaliYugaAandu() +
 					' >> </div>'+
-					'<div class="ui-datepicker-next ui-corner-all ui-datepicker-month" title="திருவள்ளுவர் ஆண்டு" style="height:100%;font-size:small;">'+					
+					'<div class="ui-datepicker-next ui-corner-all ui-datepicker-month" title="திருவள்ளுவர் ஆண்டு" style="height:100%;font-size:small;" >'+					
 					'<< திவ '+ TC.getTVAandu() +					
 					'</div>'+
-					'<div class="ui-datepicker-title" id="tvAandu">'+
-					'<span class="ui-datepicker-month">'+TC.getTamilMonthName()+" "+TC.tamilDate()+'</span>&nbsp;<span class="ui-datepicker-year">'+TC.getTamilSeason()+" "+TC.getTamilYearName()+' வருடம்</span>'+
+					'<div class="ui-datepicker-title">'+
+					'<span class="ui-datepicker-month" id="tvAandu">'+ TC.getTamilMonthName()+" "+TC.tamilDate()+' </span>'+
+					'<span class="ui-datepicker-year" id="tvAanduSeason">'+TC.getTamilSeason()+' </span>'+
+					'<span class="" id="tamilYearName">'+TC.getTamilYearName()+' வருடம்</span>'+
 					'</div>'+					
 					'</div>';
 				calender += "<table class='ui-datepicker-calendar'><thead>" +
