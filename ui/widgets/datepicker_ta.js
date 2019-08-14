@@ -993,7 +993,7 @@ $.extend( DatepickerTa.prototype, {
 		this._updateDatepicker( inst );
 	},
 	_kaliYuga:function() {
-		$("#tvAandu").html("கலியுகம் "+ TC.getKaliYugaAandu()+" ");
+		//$("#tvAandu").html("கலியுகம் "+ TC.getKaliYugaAandu()+" ");
 	},
 
 	/* Action for current link. */
@@ -1028,6 +1028,22 @@ $.extend( DatepickerTa.prototype, {
 		this._notifyChange( inst );
 		this._adjustDate( target );
 	},
+	
+	
+	_tamilDateDetails: function( id, month, year, td ) {
+		//alert("Hi all");
+		//'+ TC.getTamilMonthName()+" "+TC.tamilDate()+' 
+		//'+TC.getTamilSeason()+' 
+		//'+TC.getTamilYearName()+' வருடம்
+		y  = year;
+		m = month;
+		d = parseInt(td.innerText);
+		tamilMonth = TC.tamilMonth(y,m,d);
+		$("#tvAandu").html(TC.getTamilMonthName(y,m,d)+" "+TC.tamilDate(y,m,d)+" ");
+		$("#tvAanduSeason").html(TC.getTamilSeason(tamilMonth)+" ");
+		$("#tamilYearName").html(TC.getTamilYearName(y,m,d)+' வருடம் ');
+		
+	},
 
 	/* Action for selecting a day. */
 	_selectDay: function( id, month, year, td ) {
@@ -1044,6 +1060,8 @@ $.extend( DatepickerTa.prototype, {
 		inst.selectedYear = inst.currentYear = year;
 		this._selectDate( id, this._formatDate( inst,
 			inst.currentDay, inst.currentMonth, inst.currentYear ) );
+		
+		this._tamilDateDetails(id, month, year, td);
 	},
 
 	/* Erase the input field and hide the date picker. */
@@ -1714,7 +1732,7 @@ $.extend( DatepickerTa.prototype, {
 			" title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w" ) + "'>" + prevText + "</span></a>" :
 			( hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w" ) + "'>" + prevText + "</span></a>" ) );
 			
-		
+		//kaliYuga = this._tamilDateDetails();
 
 		nextText = this._get( inst, "nextText" );
 		nextText = ( !navigationAsDateFormat ? nextText : this.formatDate( nextText,
@@ -1788,8 +1806,8 @@ $.extend( DatepickerTa.prototype, {
 					'<< திவ '+ TC.getTVAandu() +					
 					'</div>'+
 					'<div class="ui-datepicker-title">'+
-					'<span class="ui-datepicker-month" id="tvAandu">'+ TC.getTamilMonthName()+" "+TC.tamilDate()+' </span>'+
-					'<span class="ui-datepicker-year" id="tvAanduSeason">'+TC.getTamilSeason()+' </span>'+
+					'<span class="ui-datepicker-month" id="tvAandu">'+ TC.getTamilMonthName()+" "+TC.tamilDate()+' </span> '+
+					'<span class="ui-datepicker-year" id="tvAanduSeason">'+TC.getTamilSeason()+' </span> '+
 					'<span class="" id="tamilYearName">'+TC.getTamilYearName()+' வருடம்</span>'+
 					'</div>'+					
 					'</div>';
