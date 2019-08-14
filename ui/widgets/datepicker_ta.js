@@ -1849,6 +1849,7 @@ $.extend( DatepickerTa.prototype, {
 			html += group;
 		}
 		html += buttonPanel;		
+		html += "<a href='https://thanithamizhakarathikalanjiyam.github.io'>அஃக நாட்காட்டி(சோதனை ஓட்டம்)</a>";
 		inst._keyEvent = false;
 		return html;
 	},
