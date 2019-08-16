@@ -1807,7 +1807,7 @@ $.extend( DatepickerTa.prototype, {
 					'</div>'+
 					'<div class="ui-datepicker-title">'+
 					'<span class="ui-datepicker-month" id="tvAandu">'+ TC.getTamilMonthName()+" "+TC.tamilDate()+' </span> '+
-					'<span class="ui-datepicker-year" id="tvAanduSeason">'+TC.getTamilSeason()+' </span> '+
+					'<span class="ui-datepicker-year" id="tvAanduSeason">'+TC.getTamilSeason()+' </span><BR/>'+
 					'<span class="" id="tamilYearName">'+TC.getTamilYearName()+' வருடம்</span>'+
 					'</div>'+					
 					'</div>';

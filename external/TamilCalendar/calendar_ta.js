@@ -5,27 +5,46 @@ var yrMap = [
 {
     engYear: 2018,
     engTaMap : [	
-		{eMM:1,taMM:1,taDD:18},
-		{eMM:2,taMM:1,taDD:18},
-		{eMM:3,taMM:1,taDD:18},
-		{eMM:4,taMM:1,taDD:18},		
-		{eMM:5,taMM:1,taDD:18},
-		{eMM:6,taMM:2,taDD:18},
-		{eMM:7,taMM:3,taDD:16},
-		{eMM:8,taMM:4,taDD:16},
-		{eMM:9,taMM:5,taDD:15},
-		{eMM:10,taMM:6,taDD:14},
-		{eMM:11,taMM:7,taDD:13},
-		{eMM:12,taMM:8,taDD:15},
+		{eMM:0,taMM:9,taDD:18},//Jan
+		{eMM:1,taMM:10,taDD:18},//Feb
+		{eMM:2,taMM:11,taDD:18},//Mar
+		{eMM:3,taMM:12,taDD:18},//Apr
+		     
+		{eMM:4,taMM:1,taDD:18},//May
+		{eMM:5,taMM:2,taDD:18},//Jun
+		{eMM:6,taMM:3,taDD:16},//Jul
+		{eMM:7,taMM:4,taDD:16},//Aug
+		{eMM:8,taMM:5,taDD:15},//Sep
+		{eMM:9,taMM:6,taDD:14},//Oct
+		{eMM:10,taMM:7,taDD:13},//Nov
+		{eMM:11,taMM:8,taDD:15},//Dec
 	]
 },
 {
     engYear: 2019,
     engTaMap : [	
-		{eMM:0,taMM:1,taDD:18},//Jan
-		{eMM:1,taMM:1,taDD:18},//Feb
-		{eMM:2,taMM:1,taDD:18},//Mar
-		{eMM:3,taMM:1,taDD:18},//Apr
+		{eMM:0,taMM:9,taDD:18},//Jan
+		{eMM:1,taMM:10,taDD:18},//Feb
+		{eMM:2,taMM:11,taDD:18},//Mar
+		{eMM:3,taMM:12,taDD:18},//Apr
+		     
+		{eMM:4,taMM:1,taDD:18},//May
+		{eMM:5,taMM:2,taDD:18},//Jun
+		{eMM:6,taMM:3,taDD:16},//Jul
+		{eMM:7,taMM:4,taDD:16},//Aug
+		{eMM:8,taMM:5,taDD:15},//Sep
+		{eMM:9,taMM:6,taDD:14},//Oct
+		{eMM:10,taMM:7,taDD:13},//Nov
+		{eMM:11,taMM:8,taDD:15},//Dec
+	]
+},
+{
+    engYear: 2020,
+    engTaMap : [	
+		{eMM:0,taMM:9,taDD:16},//Jan
+		{eMM:1,taMM:10,taDD:18},//Feb
+		{eMM:2,taMM:11,taDD:17},//Mar
+		{eMM:3,taMM:12,taDD:19},//Apr
 		     
 		{eMM:4,taMM:1,taDD:18},//May
 		{eMM:5,taMM:2,taDD:18},//Jun
@@ -90,9 +109,11 @@ var TC = {
 				m = today.getMonth();
 				d = today.getDate();
 			}
-			td = 0
+			var td = 0;
 			var i;
-			for (i =0; i < yrMap.length; i++)
+			var daysInMonth = TC._getDaysInMonth(y, m);
+			
+			for (i = 0; i < yrMap.length; i++)
 			{
 				if(yrMap[i].engYear == y)
 				{
@@ -101,14 +122,29 @@ var TC = {
 					{
 						var preMonth = yrMap[i].engTaMap[j-1];
 						var curMonth = yrMap[i].engTaMap[j];
-						var nxtMonth = yrMap[i].engTaMap[j+1];
+						var nxtMonth = yrMap[i].engTaMap[j+1];	
+						var nxtMonth;
+						//TODO If the english month is december error occured
+						if(curMonth.eMM == 11)
+						{
+							nxtMonth = yrMap[i+1].engTaMap[(j+1) - curMonth.eMM];
+						}
+						else
+						{
+							nxtMonth = yrMap[i].engTaMap[j+1];
+						}
 						if(curMonth.eMM == m){
-							if(d < curMonth.taDD){
-								td = curMonth.taDD + d - 1;
+							var nxtMonthDays = nxtMonth.taDD;
+							var curMonthReamingDays = daysInMonth - nxtMonthDays;
+							var curMonthStartingDay = curMonth.taDD;
+							var daysInCurTamilMonth = curMonthReamingDays + curMonthStartingDay;
+														
+							td = curMonth.taDD + d - 1;
+							if(td > daysInCurTamilMonth)
+							{
+								td = td - daysInCurTamilMonth;							
 							}
-							else if(curMonth.taDD >= d){
-								td = curMonth.taMM;
-							}
+							
 							break;							
 						}
 					}
@@ -125,25 +161,39 @@ var TC = {
 			}
 			tm = 0;
 			var i;
-			for (i =0; i < yrMap.length; i++)
-			{
-				if(yrMap[i].engYear == y)
-				{
+			var daysInMonth = TC._getDaysInMonth(y, m);
+			var td = 0;
+			for (i =0; i < yrMap.length; i++){
+				if(yrMap[i].engYear == y){
 					var j;
-					for (j =0; j < yrMap[i].engTaMap.length; j++)
-					{	
+					for (j =0; j < yrMap[i].engTaMap.length; j++){	
 						var preMonth = yrMap[i].engTaMap[j-1];
 						var curMonth = yrMap[i].engTaMap[j];
-						var nxtMonth = yrMap[i].engTaMap[j+1];
+						var nxtMonth;
+						//TODO If the english month is december error occured
+						if(curMonth.eMM == 11)
+						{
+							nxtMonth = yrMap[i+1].engTaMap[(j+1) - curMonth.eMM];
+						}
+						else
+						{
+							nxtMonth = yrMap[i].engTaMap[j+1];
+						}
 						if(curMonth.eMM == m){
-							if(curMonth.taDD < d){
-								tm = curMonth.taMM - 1;
-							}
-							else if(curMonth.taDD >= d){
+							var nxtMonthDays = nxtMonth.taDD;
+							var curMonthReamingDays = daysInMonth - nxtMonthDays;
+							var curMonthStartingDay = curMonth.taDD;
+							var daysInCurTamilMonth = curMonthReamingDays + curMonthStartingDay;
+							
+							td = curMonth.taDD + d - 1;
+							if(td > daysInCurTamilMonth)
+							{
+								tm = curMonth.taMM + 1;
+							}							
+							else									
+							{
 								tm = curMonth.taMM;
 							}
-							//else
-							//	tm = 5;	
 							break;
 						}													
 					}
@@ -211,6 +261,24 @@ var TC = {
 			}
 			kaliYugaAandu = y + 3101;
 			return kaliYugaAandu;
+		},
+		/* Find the number of days in a given month. */
+		_getDaysInMonth: function( year, month ) {
+			return 32 - this._daylightSavingAdjust( new Date( year, month, 32 ) ).getDate();
+		},
+		/* Handle switch to/from daylight saving.
+		* Hours may be non-zero on daylight saving cut-over:
+		* > 12 when midnight changeover, but then cannot generate
+		* midnight datetime, so jump to 1AM, otherwise reset.
+		* @param  date  (Date) the date to check
+		* @return  (Date) the corrected date
+		*/
+		_daylightSavingAdjust: function( date ) {
+			if ( !date ) {
+				return null;
+			}
+			date.setHours( date.getHours() > 12 ? date.getHours() + 2 : 0 );
+			return date;
 		},
 		Test: function (y, m, d){
 			return "<HR>Date:"+y + m + d+"<BR>"+
